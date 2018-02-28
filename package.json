@@ -1,0 +1,59 @@
+{
+  "_from": "vuescroll@^2.6.1",
+  "_id": "vuescroll@2.7.7",
+  "_inBundle": false,
+  "_integrity": "sha512-C0Y/D7kpnubGbUkmLY/h7G+QBtXDozWW06wOXjIQcrieMvxgcBVdMhMUJhgOUpl610Qy631c9iUPJt3LT+mYiA==",
+  "_location": "/vuescroll",
+  "_phantomChildren": {
+    "source-map": "0.6.1"
+  },
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "vuescroll@^2.6.1",
+    "name": "vuescroll",
+    "escapedName": "vuescroll",
+    "rawSpec": "^2.6.1",
+    "saveSpec": null,
+    "fetchSpec": "^2.6.1"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/vuescroll/-/vuescroll-2.7.7.tgz",
+  "_shasum": "7a860e24480123a6ae11fd6b25334370da7200ee",
+  "_spec": "vuescroll@^2.6.1",
+  "_where": "D:\\mmmmmmmm\\myCollect\\myCollect",
+  "author": {
+    "name": "wangyi7099"
+  },
+  "bugs": {
+    "url": "https://github.com/wangyi7099/vuescroll/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "uglify-es": "^3.3.8",
+    "vue": "^2.0"
+  },
+  "deprecated": false,
+  "description": "A virtual scrollbar based on vuejs 2.x",
+  "homepage": "https://github.com/wangyi7099/vuescroll#readme",
+  "keywords": [
+    "vuescroll",
+    "scrollbar",
+    "vuescrollbar",
+    "vue"
+  ],
+  "license": "MIT",
+  "main": "./vuescroll.min.js",
+  "name": "vuescroll",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangyi7099/vuescroll.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "2.7.7"
+}
