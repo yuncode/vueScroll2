@@ -527,7 +527,7 @@
                     document.removeEventListener('mousemove', move);
                     document.removeEventListener('mouseup', mouseup);
                     if(isMoved){
-                        vm.$emit('endScroll', {x:vm.scrollPanel.el.scrollLeft,y:vm.scrollPanel.el.scrollTop});                         
+                        vm.$emit('endScroll', {x:vm.scrollPanel.el.scrollLeft,y:vm.scrollPanel.el.scrollTop});                    
                     }
                     isMoved = false;
                 }
@@ -574,7 +574,7 @@
                     document.removeEventListener('mousemove', move);
                     document.removeEventListener('mouseup', mouseup);
                     if(isMoved){
-                        vm.$emit('endScroll', {x:vm.scrollPanel.el.scrollLeft,y:vm.scrollPanel.el.scrollTop});                         
+                        vm.$emit('endScroll', {x:vm.scrollPanel.el.scrollLeft,y:vm.scrollPanel.el.scrollTop});             
                     }
                     isMoved = false;
                 }
@@ -590,7 +590,6 @@
                     vm.showHBar();
                     document.addEventListener('mousemove', move);
                     document.addEventListener('mouseup', mouseup);
-
                 }
                 this.listeners.push({
                     dom: vm.hScrollBar.el,
@@ -675,10 +674,12 @@
 
                     if(Math.abs(_deltaX) > Math.abs(_deltaY)) {
                         _delta = _deltaX;
-                        vm.scrollHBar(_delta > 0 ? -1 : 1, Math.abs(_delta / vm.hScrollBar.innerDeltaX));
+                        vm.scrollHBar(_delta > 0 ? -1 : 1, Math.abs(_delta / vm.hScrollBar.innerDeltaX)/3);
+
+                      
                     } else if(Math.abs(_deltaX) < Math.abs(_deltaY)){
                         _delta = _deltaY;
-                        vm.scrollVBar(_delta > 0 ? -1 : 1, Math.abs(_delta / vm.vScrollBar.innerDeltaY));
+                        vm.scrollVBar(_delta > 0 ? -1 : 1, Math.abs(_delta / vm.vScrollBar.innerDeltaY)/3);
                     }
                     x = _x;
                     y = _y;
@@ -691,7 +692,7 @@
                     document.removeEventListener('mouseup', mouseup);
 
                     if(isMoved){
-                        vm.$emit('endScroll', {x:vm.scrollPanel.el.scrollLeft,y:vm.scrollPanel.el.scrollTop});                         
+                        vm.$emit('endScroll', {x:vm.scrollPanel.el.scrollLeft,y:vm.scrollPanel.el.scrollTop});                 
                     }
                     isMoved =  false;
                 }
@@ -715,9 +716,7 @@
                     vm.showHBar();
                     y = e.pageY;
                     vm.showVBar();
-
                     document.addEventListener('mousemove', move);
-
                     document.addEventListener('mouseup', mouseup);
                 }
                 pannel.addEventListener('mousedown', t);
