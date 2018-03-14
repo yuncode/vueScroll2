@@ -42,13 +42,13 @@
                 class: "vueScrollPanel",
                 on: {
                     mouseenter: function() {
-                        vm.$emit('showBar');
+                        //vm.$emit('showBar');
                     },
                     mouseleave: function() {
-                        vm.$emit('hideBar');
+                       // vm.$emit('hideBar');
                     },
                     mousemove: function () {
-                        vm.$emit('showBar');
+                        //vm.$emit('showBar');
                     }
                 }
             }, this.$slots.default);
@@ -352,6 +352,9 @@
                 }
             },
             resizeVBarTop({height, scrollPanelHeight, scrollPanelScrollHeight, deltaY}) {
+
+
+                //console.log(this.scrollPanel.el.scrollTop)
                 // cacl the last height first
                 var lastHeight = scrollPanelScrollHeight - scrollPanelHeight - this.scrollPanel.el.scrollTop;
                 if(lastHeight < this.accuracy) {
@@ -387,8 +390,11 @@
                 var deltaY = {
                     deltaY: this.vScrollBar.ops.deltaY
                 };
+
                 if(!this.isMouseLeavePanel || this.vScrollBar.ops.keepShow){
                     if ((this.vScrollBar.state.height = temp = this.getVBarHeight(deltaY))) {
+
+                        //console.log(this.resizeVBarTop(temp))
                         this.vScrollBar.state.top = this.resizeVBarTop(temp);
                         this.vScrollBar.state.height = temp.height;
                         this.vScrollBar.state.opacity = this.vScrollBar.ops.opacity;
@@ -434,7 +440,6 @@
             },
             scrollVBar: function(pos, time) {
                 // >0 scroll to down  <0 scroll to up
-                 
                 var top = this.vScrollBar.state.top;
                 var scrollPanelHeight = getComputed(this.scrollPanel.el, 'height').replace('px', "");
                 var scrollPanelScrollHeight = this.scrollPanel.el.scrollHeight;
@@ -659,6 +664,7 @@
                 var pannel = this.scrollPanel.el;
                 var x, y;
                 var _x, _y;
+                var sx,sy;
                 var isMoved = false;
                 function move(e) {
                     _x = e.pageX;
@@ -666,6 +672,13 @@
                     var _delta = void 0;
                     var _deltaX = _x - x;
                     var _deltaY = _y - y;
+
+                    x = _x;
+                    y = _y;
+                    if(!((Math.abs(_x-sx)>50)||(Math.abs(_y-sy)>50))&&!isMoved){
+                        return false;
+                    }
+
                     if(!_deltaX&&!_deltaY){
                         return false
                     }else{
@@ -681,8 +694,6 @@
                         _delta = _deltaY;
                         vm.scrollVBar(_delta > 0 ? -1 : 1, Math.abs(_delta / vm.vScrollBar.innerDeltaY)/3);
                     }
-                    x = _x;
-                    y = _y;
                 }
                 function mouseup(e){
                     vm.mousedown = false;
@@ -712,9 +723,9 @@
                     }
 
                     vm.mousedown = true;
-                    x = e.pageX;
+                    sx = x = e.pageX;
                     vm.showHBar();
-                    y = e.pageY;
+                    sy = y = e.pageY;
                     vm.showVBar();
                     document.addEventListener('mousemove', move);
                     document.addEventListener('mouseup', mouseup);
