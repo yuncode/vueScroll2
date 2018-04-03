@@ -434,8 +434,13 @@
             // listen wheel scrolling
             wheel(e) {
                 var vm = this;
-                vm.showVBar();
-                vm.scrollVBar(e.deltaY > 0 ? 1 : -1, 1);
+                if(vm.ops.wheelH){
+                    vm.showHBar();
+                    vm.scrollHBar(e.deltaY > 0 ? 1 : -1, 2); 
+                }else{
+                    vm.showVBar();
+                    vm.scrollVBar(e.deltaY > 0 ? 1 : -1, 1);                    
+                }
                 e.stopPropagation();
             },
             scrollVBar: function(pos, time) {
@@ -753,6 +758,9 @@
                         },
                         hBar: {
 
+                        },
+                        wheelH:{
+                            default:false
                         }
                     }
                 }
@@ -767,7 +775,7 @@
             },
             accuracy: {
                 default: 5
-            } 
+            }
         }
     }
 
