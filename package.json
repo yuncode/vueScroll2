@@ -11,7 +11,7 @@
   "homepage": "https://github.com/yuncode/vueScroll2",
   "license": "MIT",
   "main": "./vuescroll.min.js",
-  "name": "vuescroll2",
+  "name": "vuescroll-copy",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/yuncode/vueScroll2.git"
@@ -19,5 +19,5 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "2.7.7"
+  "version": "1.1.2"
 }
