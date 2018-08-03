@@ -441,7 +441,16 @@
                     vm.showVBar();
                     vm.scrollVBar(e.deltaY > 0 ? 1 : -1, 1);                    
                 }
-                e.stopPropagation();
+
+                var scrollPanelHeight = Math.floor(getComputed(this.scrollPanel.el, "height").replace('px', ""));
+
+                if(this.vScrollBar.state.height!=0){
+                    if(this.vScrollBar.state.top!=0&& this.vScrollBar.state.top < (scrollPanelHeight - this.vScrollBar.state.height)){
+                        e.stopPropagation();
+                    }
+                }
+
+                
             },
             scrollVBar: function(pos, time) {
                 // >0 scroll to down  <0 scroll to up
@@ -452,6 +461,7 @@
                 var height = this.vScrollBar.state.height;
                 var innerdeltaY = this.vScrollBar.innerDeltaY;
                 var deltaY = this.vScrollBar.ops.deltaY;
+
                 if (!((pos < 0 && top <= 0) || (scrollPanelHeight <= top + height && pos > 0) || (Math.abs(scrollPanelScrollHeight - scrollPanelHeight) < this.accuracy))) {
                     var Top = top + pos * innerdeltaY * time;
                     var ScrollTop = scrollPanelScrollTop + pos * deltaY * time;
